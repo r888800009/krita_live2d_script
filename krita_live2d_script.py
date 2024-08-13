@@ -29,11 +29,11 @@ def split_layer(root_node, node):
     root_node.addChildNode(left_layer, node)
     root_node.addChildNode(right_layer, node)
 
-    # Crop the left layer to the left half
-    left_layer.cropNode(0, 0, mid_x, height)
+    # Crop the left layer to the right half
+    right_layer.cropNode(0, 0, mid_x, height)
 
-    # Crop the right layer to the right half
-    right_layer.cropNode(mid_x, 0, width - mid_x, height)
+    # Crop the right layer to the left half
+    left_layer.cropNode(mid_x, 0, width - mid_x, height)
 
     # Hide or delete the original layer if necessary
     print(f"splited: {node.name()}")
