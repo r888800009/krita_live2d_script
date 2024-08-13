@@ -7,7 +7,7 @@ using this script in Krita to split LR and merge down the layers for Live2D/inoc
 it is inspired by [@seagetch](https://github.com/seagetch)'s [gimp-vtuber-scripts](https://github.com/Inochi2D/gimp-vtuber-scripts)
 
 Usecase like this:
-- lift and right eye are on the same layer
+- split left and right eye are on the same layer
 - multiple layers for rendering the face or body
 
 you can easily rename your layers with the suffix like:
