@@ -5,7 +5,8 @@ backup first!
 """
 
 doc = Krita.instance().activeDocument()
-flat_keyword = "_MergeDown"
+merge_down_keyword = "_MergeDown"
+flatten_keyword = "_Flatten"
 LR_keyword = "_LR"
 Draft_keyword = "_Draft"
 
@@ -50,9 +51,35 @@ def process_layers(node):
             print(f"clean: {child.name()}")
             child.remove()
 
-        if child.name().endswith(flat_keyword):
-            print(f"Flattening: {child.name()}")
+        if child.name().endswith(merge_down_keyword):
+            print(f"MergeDown: {child.name()}")
             child.mergeDown()
+            
+        if child.name().endswith(flatten_keyword):
+            print(f"Flatten: {child.name()}")
+            target_name = child.name()[:-len(flatten_keyword)]
+
+            # create a empty layer below
+            empty_layer = doc.createNode(target_name, "paintLayer")
+            duplicate = child.duplicate()
+            
+            # add empty layer and duplicate layer
+            node.addChildNode(duplicate, child)
+            node.addChildNode(empty_layer, child)
+            
+            # if layer is inheritAlpha, disable it, if not, layer will be nothing
+            inherit_alpha = duplicate.inheritAlpha()
+            if inherit_alpha:
+                duplicate.setInheritAlpha(False)
+            
+            # using mergeDown to flatten
+            duplicate.mergeDown()
+            
+            # if layer was inheritAlpha, enable it
+            duplicate.setInheritAlpha(inherit_alpha)
+            
+            # remove original layer
+            child.remove()
 
         if child.name().endswith(LR_keyword):
             split_layer(node, child)

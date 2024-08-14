@@ -14,6 +14,7 @@ you can easily rename your layers with the suffix like:
 - `_Draft` for the draft layers, it will remove from your final .kra file
 - `_LR` for the left and right layers, it will split into two layers with the suffix `_L` and `_R`
 - `_MergeDown` for the layers you want to merge down
+- `_Flatten` for layer with the filter, it will flatten the layer
 
 for example:
 - `eye_LR` will split into `eye_L` and `eye_R` and remove original layer
