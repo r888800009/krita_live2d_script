@@ -3,7 +3,7 @@
 ## **Backup your work before using this script.**
 
 ## Description
-using this script in Krita to split LR and merge down the layers for Live2D/inochi2d model development.
+using this script in Krita to split LR and merge down the layers for Live2D/inochi2d/nijigenerate model development.
 it is inspired by [@seagetch](https://github.com/seagetch)'s [gimp-vtuber-scripts](https://github.com/Inochi2D/gimp-vtuber-scripts)
 
 Usecase like this:
